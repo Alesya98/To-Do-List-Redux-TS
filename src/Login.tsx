@@ -17,6 +17,11 @@ const initialData = {
     age: "",
 }
 
+interface IServerError {
+  param: string; 
+  msg: string;
+}
+
 const Login = () => {
   const navigate = useNavigate();
   const [data, setData] = useState<InitialData>(initialData);
@@ -59,8 +64,8 @@ const Login = () => {
         
       navigate("/login");
       } else {
-        const errorsMap = {};
-        result.errors?.forEach((error) => {  //? делает проверку есть ли в св-во errors в result
+        const errorsMap:Record<string, string> = {};
+        result.errors?.forEach((error: IServerError) => {  //? делает проверку есть ли в св-во errors в result
           errorsMap[error.param] = error.msg
           if (error.param === "username") {
             errorsMap.username = error.msg;
