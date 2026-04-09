@@ -67,17 +67,6 @@ const Login = () => {
         const errorsMap:Record<string, string> = {};
         result.errors?.forEach((error: IServerError) => {  //? делает проверку есть ли в св-во errors в result
           errorsMap[error.param] = error.msg
-          if (error.param === "username") {
-            errorsMap.username = error.msg;
-          } else if (error.param === "email") {
-            errorsMap.email = error.msg;
-          } else if (error.param === "password") {
-            errorsMap.password = error.msg;
-          } else if (error.param === "gender") {
-            errorsMap.gender = error.msg;
-          } else if (error.param === "age") {
-            errorsMap.age = error.msg;
-          }
         });
         setFieldErrors(errorsMap);
       }
